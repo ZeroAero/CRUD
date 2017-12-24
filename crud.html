@@ -1,184 +1,62 @@
 <!DOCTYPE html> <!-- Daniel C. Ravndal -->
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		<title>C R U D</title>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-		<style type="text/css">
-
-				body {
-					background: #303030;
-					padding: 1em;
-				}
-				.form-style-8{
-    			font-family: 'Open Sans Condensed', arial, sans;
-    			width: 500px;
-					margin-top: 100px;
-					margin-left: 75px;
-    			padding: 30px;
-    			background: #FFFFFF;
-    			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    			-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    			-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
-				}
-				.form-style-8 h2{
-    			background: #252525;
-					font-weight: bold;
-    			text-transform: uppercase;
-    			font-family: 'Open Sans Condensed', sans-serif;
-    			color: #2CBBBB;
-	    		font-size: 25px;
-    			padding: 20px;
-    			margin: -30px -30px 30px -30px;
-				}
-				.form-style-8 input[type="text"],
-				.form-style-8 input[type="date"],
-				.form-style-8 input[type="datetime"],
-				.form-style-8 input[type="email"],
-				.form-style-8 input[type="number"],
-				.form-style-8 input[type="search"],
-				.form-style-8 input[type="time"],
-				.form-style-8 input[type="url"],
-				.form-style-8 input[type="password"],
-				.form-style-8 textarea,
-				.form-style-8 select{
-    			box-sizing: border-box;
-    			-webkit-box-sizing: border-box;
-    			-moz-box-sizing: border-box;
-    			outline: none;
-    			display: inline-block;
-    			width: 80%;
-    			padding: 7px;
-    			border: none;
-    			border-bottom: 1px solid #ddd;
-    			background: transparent;
-    			margin-bottom: 10px;
-    			font: 16px Arial, Helvetica, sans-serif;
-    			height: 45px;
-				}
-				.form-style-8 textarea{
-    			resize:none;
-    			overflow: hidden;
-				}
-				.form-style-8 label{
-					outline: none;
-					width: 80%;
-					border: none;
-					background: transparent;
-					margin-bottom: 10px;
-					font: 16px Arial, Helvetica, sans-serif;
-					height: 45px;
-				}
-				.form-style-8 input[type="button"],
-				.form-style-8 input[type="submit"]{
-    			-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			background-color: #2CBBBB;
-    			border: 1px solid #27A0A0;
-    			display: inline-block;
-    			cursor: pointer;
-    			color: #FFFFFF;
-    			font-family: 'Open Sans Condensed', sans-serif;
-    			font-size: 14px;
-    			padding: 8px 18px;
-    			text-decoration: none;
-    			text-transform: uppercase;
-				}
-				.form-style-8 input[type="button"]:hover,
-				.form-style-8 input[type="submit"]:hover {
-    			background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
-    			background-color:#34CACA;
-				}
-				h1{
-					position:sticky;
-					color: #CCFF40;
-					margin-left: 150px;
-					margin-top: 50px;
-				}
-				#div1{
-					position: fixed;
-					left:100px;
-					top:320px;
-				}
-				#div2{
-					position:fixed;
-					top:70px;
-					left:100px;
-				}
-				#div3{
-					position:fixed;
-					top:100px;
-					left:850px;
-				}
-				#btn{
-					position:fixed;
-					top:370px;
-					left:175px;
-					-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			box-shadow: inset 0px 1px 0px 0px #45D6D6;
-    			background-color: #2CBBBB;
-    			border: 1px solid #27A0A0;
-    			display: inline-block;
-    			cursor: pointer;
-    			color: #FFFFFF;
-    			font-family: 'Open Sans Condensed', sans-serif;
-    			font-size: 14px;
-    			padding: 8px 18px;
-    			text-decoration: none;
-    			text-transform: uppercase;
-				}
-			</style>
 	</head>
 	<body>
-	<h1> VARELAGER </h1>
-	<div id="div2"class="form-style-8">
-		<h2>Søk etter vare</h2>
-		<form>
-			<input type="text" id="sok" placeholder="Skriv Varenummer"/>
-			<input type="button" value="Søk" onclick="searching()"/>
-		</form>
-	</div>
-	<button id="btn"> Legg til varer </button>
-	<div id="div1" class="form-style-8">
-  <h2>Legg til vare</h2>
-  <form>
-    <input type="text" id="field1" placeholder="Varenummer"/>
-    <input type="text" id="field2" placeholder="Beskrivelse"/>
-		<input type="text" id="field3" placeholder="Plassering 1"/>
-		<input type="text" id="field4" placeholder="Plassering 2"/>
-		<input type="text" id="field5" placeholder="Plassering 3"/>
-		<input type="number" id="field6" placeholder="Kostnad"/>
-		<input type="number" id="field7" placeholder="Antall"/>
-    <input type="button" value="Legg til" onclick="add()"/>
-  </form>
-	</div>
-	<div id="div3" class="form-style-8">
-			<h2>Vare</h2>
-			<form>
-				<div id="vare">
-					<label> Varenummer: </label>
-					<input id="display1" type="text" readonly="readonly"/>
-					<label> <br><br> Beskrivelse: </label>
-					<input id="display2" type="text" readonly="readonly"/>
-					<label> <br><br> Plassering1: </label>
-					<input id="display3" type="text" readonly="readonly"/>
-					<label> <br><br> Plassering2: </label>
-					<input id="display4" type="text" readonly="readonly"/>
-					<label> <br><br> Plassering3: </label>
-					<input id="display5" type="text" readonly="readonly"/>
-					<label> <br><br> Kostnad : </label>
-					<input id="display6" type="number" readonly="readonly"/>
-					<label> <br><br> Antall : </label>
-					<input id="display7" type="number" readonly="readonly"/>
-					<input type="button" value="Endre Vare" onclick="endre()"/>
-					<input type="button" value="Fullfør endringer" onclick="change()"/>
-					<input type="button" value="Slett Vare" onclick="slett()"/>
-					<input type="button" value="Ta ut Vare" onclick="antall()"/>
-				</div>
-			</form>
-	</div>
+		<div id="wrapper">
+			<h1> VARELAGER </h1>
+			<div id="div2"class="form-style-8">
+				<h2>Søk etter vare</h2>
+				<form>
+					<input type="text" id="sok" placeholder="Skriv Varenummer"/>
+					<input type="button" value="Søk" onclick="searching()"/>
+				</form>
+			</div>
+			<button id="btn"> Legg til varer </button>
+			<div id="div1" class="form-style-8" />
+		  <h2>Legg til vare</h2>
+		  <form>
+		    <input type="text" id="field1" placeholder="Varenummer"/>
+		    <input type="text" id="field2" placeholder="Beskrivelse"/>
+				<input type="text" id="field3" placeholder="Plassering 1"/>
+				<input type="text" id="field4" placeholder="Plassering 2"/>
+				<input type="text" id="field5" placeholder="Plassering 3"/>
+				<input type="number" id="field6" placeholder="Kostnad"/>
+				<input type="number" id="field7" placeholder="Antall"/>
+		    <input type="button" value="Legg til" onclick="add()"/>
+		  </form>
+			</div>
+			<div id="div3" class="form-style-8">
+				<h2>Vare</h2>
+				<form>
+					<div id="vare">
+						<label> Varenummer: </label>
+						<input id="display1" type="text" readonly="readonly"/>
+						<label> <br><br> Beskrivelse: </label>
+						<input id="display2" type="text" readonly="readonly"/>
+						<label> <br><br> Plassering1: </label>
+						<input id="display3" type="text" readonly="readonly"/>
+						<label> <br><br> Plassering2: </label>
+						<input id="display4" type="text" readonly="readonly"/>
+						<label> <br><br> Plassering3: </label>
+						<input id="display5" type="text" readonly="readonly"/>
+						<label> <br><br> Kostnad : </label>
+						<input id="display6" type="number" readonly="readonly"/>
+						<label> <br><br> Antall : </label>
+						<input id="display7" type="number" readonly="readonly"/>
+						<input type="button" value="Endre Vare" onclick="endre()"/>
+						<input type="button" value="Fullfør endringer" onclick="change()"/>
+						<input type="button" value="Slett Vare" onclick="slett()"/>
+						<input type="button" value="Ta ut Vare" onclick="antall()"/>
+					</div>
+				</form>
+			</div>
+		</div>
+
 		<script>
 			class item {
 				constructor(varenummer, beskrivelse, plassering1, plassering2, plassering3, kostnad, antall){
