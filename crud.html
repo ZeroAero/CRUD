@@ -1,0 +1,363 @@
+<!DOCTYPE html> <!-- Daniel C. Ravndal -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>C R U D</title>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+
+				body {
+					background: #303030;
+					padding: 1em;
+				}
+				.form-style-8{
+    			font-family: 'Open Sans Condensed', arial, sans;
+    			width: 500px;
+					margin-top: 100px;
+					margin-left: 75px;
+    			padding: 30px;
+    			background: #FFFFFF;
+    			box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    			-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    			-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+				}
+				.form-style-8 h2{
+    			background: #252525;
+					font-weight: bold;
+    			text-transform: uppercase;
+    			font-family: 'Open Sans Condensed', sans-serif;
+    			color: #2CBBBB;
+	    		font-size: 25px;
+    			padding: 20px;
+    			margin: -30px -30px 30px -30px;
+				}
+				.form-style-8 input[type="text"],
+				.form-style-8 input[type="date"],
+				.form-style-8 input[type="datetime"],
+				.form-style-8 input[type="email"],
+				.form-style-8 input[type="number"],
+				.form-style-8 input[type="search"],
+				.form-style-8 input[type="time"],
+				.form-style-8 input[type="url"],
+				.form-style-8 input[type="password"],
+				.form-style-8 textarea,
+				.form-style-8 select{
+    			box-sizing: border-box;
+    			-webkit-box-sizing: border-box;
+    			-moz-box-sizing: border-box;
+    			outline: none;
+    			display: inline-block;
+    			width: 80%;
+    			padding: 7px;
+    			border: none;
+    			border-bottom: 1px solid #ddd;
+    			background: transparent;
+    			margin-bottom: 10px;
+    			font: 16px Arial, Helvetica, sans-serif;
+    			height: 45px;
+				}
+				.form-style-8 textarea{
+    			resize:none;
+    			overflow: hidden;
+				}
+				.form-style-8 label{
+					outline: none;
+					width: 80%;
+					border: none;
+					background: transparent;
+					margin-bottom: 10px;
+					font: 16px Arial, Helvetica, sans-serif;
+					height: 45px;
+				}
+				.form-style-8 input[type="button"],
+				.form-style-8 input[type="submit"]{
+    			-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			background-color: #2CBBBB;
+    			border: 1px solid #27A0A0;
+    			display: inline-block;
+    			cursor: pointer;
+    			color: #FFFFFF;
+    			font-family: 'Open Sans Condensed', sans-serif;
+    			font-size: 14px;
+    			padding: 8px 18px;
+    			text-decoration: none;
+    			text-transform: uppercase;
+				}
+				.form-style-8 input[type="button"]:hover,
+				.form-style-8 input[type="submit"]:hover {
+    			background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+    			background-color:#34CACA;
+				}
+				h1{
+					position:sticky;
+					color: #CCFF40;
+					margin-left: 150px;
+					margin-top: 50px;
+				}
+				#div1{
+					position: fixed;
+					left:100px;
+					top:320px;
+				}
+				#div2{
+					position:fixed;
+					top:70px;
+					left:100px;
+				}
+				#div3{
+					position:fixed;
+					top:100px;
+					left:850px;
+				}
+				#btn{
+					position:fixed;
+					top:370px;
+					left:175px;
+					-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			box-shadow: inset 0px 1px 0px 0px #45D6D6;
+    			background-color: #2CBBBB;
+    			border: 1px solid #27A0A0;
+    			display: inline-block;
+    			cursor: pointer;
+    			color: #FFFFFF;
+    			font-family: 'Open Sans Condensed', sans-serif;
+    			font-size: 14px;
+    			padding: 8px 18px;
+    			text-decoration: none;
+    			text-transform: uppercase;
+				}
+			</style>
+	</head>
+	<body>
+	<h1> VARELAGER </h1>
+	<div id="div2"class="form-style-8">
+		<h2>Søk etter vare</h2>
+		<form>
+			<input type="text" id="sok" placeholder="Skriv Varenummer"/>
+			<input type="button" value="Søk" onclick="searching()"/>
+		</form>
+	</div>
+	<button id="btn"> Legg til varer </button>
+	<div id="div1" class="form-style-8">
+  <h2>Legg til vare</h2>
+  <form>
+    <input type="text" id="field1" placeholder="Varenummer"/>
+    <input type="text" id="field2" placeholder="Beskrivelse"/>
+		<input type="text" id="field3" placeholder="Plassering 1"/>
+		<input type="text" id="field4" placeholder="Plassering 2"/>
+		<input type="text" id="field5" placeholder="Plassering 3"/>
+		<input type="number" id="field6" placeholder="Kostnad"/>
+		<input type="number" id="field7" placeholder="Antall"/>
+    <input type="button" value="Legg til" onclick="add()"/>
+  </form>
+	</div>
+	<div id="div3" class="form-style-8">
+			<h2>Vare</h2>
+			<form>
+				<div id="vare">
+					<label> Varenummer: </label>
+					<input id="display1" type="text" readonly="readonly"/>
+					<label> <br><br> Beskrivelse: </label>
+					<input id="display2" type="text" readonly="readonly"/>
+					<label> <br><br> Plassering1: </label>
+					<input id="display3" type="text" readonly="readonly"/>
+					<label> <br><br> Plassering2: </label>
+					<input id="display4" type="text" readonly="readonly"/>
+					<label> <br><br> Plassering3: </label>
+					<input id="display5" type="text" readonly="readonly"/>
+					<label> <br><br> Kostnad : </label>
+					<input id="display6" type="number" readonly="readonly"/>
+					<label> <br><br> Antall : </label>
+					<input id="display7" type="number" readonly="readonly"/>
+					<input type="button" value="Endre Vare" onclick="endre()"/>
+					<input type="button" value="Fullfør endringer" onclick="change()"/>
+					<input type="button" value="Slett Vare" onclick="slett()"/>
+					<input type="button" value="Ta ut Vare" onclick="antall()"/>
+				</div>
+			</form>
+	</div>
+		<script>
+			class item {
+				constructor(varenummer, beskrivelse, plassering1, plassering2, plassering3, kostnad, antall){
+					this.varenummer = varenummer;
+					this.beskrivelse = beskrivelse;
+					this.plassering1 = plassering1;
+					this.plassering2 = plassering2;
+					this.plassering3 = plassering3;
+					this.kostnad = kostnad;
+					this.antall = antall;
+				}
+			}
+
+			var div = document.getElementById("div1");
+			div.style.display = 'none';
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+
+				var svar = prompt("skriv passord");
+				if(svar == 123){
+
+				  div = document.getElementById("div1");
+					if (div.style.display == 'none') {
+							div.style.display = 'block';
+					}
+					else {
+							div.style.display = 'none';
+					}
+				}
+				else{
+					alert("feil passord");
+				}
+			}
+
+			function findWithAttr(array, attr, value) {
+				for(var i = 0; i < array.length; i += 1) {
+					if(array[i][attr] == value) {
+							return i;
+					}
+				}
+				return -1;
+			}
+
+			var items = loadArray();
+
+			function loadArray(){
+				if(localStorage.getItem("Varer") == null){
+					var items = [];
+					return items;
+				}
+				else{
+					var items = [];
+					items = JSON.parse(localStorage.getItem("Varer"));
+					return items;
+				}
+			}
+
+			function add(){
+
+				var varenummer = document.getElementById("field1").value;
+				var beskrivelse = document.getElementById("field2").value;
+				var plassering1 = document.getElementById("field3").value;
+				var plassering2 = document.getElementById("field4").value;
+				var plassering3 = document.getElementById("field5").value;
+				var kostnad = document.getElementById("field6").value;
+				var antall = document.getElementById("field7").value;
+
+				items.push(new item(varenummer, beskrivelse, plassering1, plassering2, plassering3, kostnad, antall));
+				localStorage.setItem("Varer", JSON.stringify(items));
+
+
+				for(var i of items){
+					alert(i.id);
+				}
+
+				document.getElementById("field1").value = "";
+				document.getElementById("field2").value = "";
+				document.getElementById("field3").value = "";
+				document.getElementById("field4").value = "";
+				document.getElementById("field5").value = "";
+				document.getElementById("field6").value = "";
+				document.getElementById("field7").value = "";
+			}
+
+			function searching(){
+				let search = document.getElementById("sok").value;
+
+				let search1 = findWithAttr(items, "varenummer", search);
+
+				if(findWithAttr(items, "varenummer", search) >-1){
+					document.getElementById("display1").value = items[search1].varenummer;
+					document.getElementById("display2").value = items[search1].beskrivelse;
+					document.getElementById("display3").value = items[search1].plassering1;
+					document.getElementById("display4").value = items[search1].plassering2;
+					document.getElementById("display5").value = items[search1].plassering3;
+					document.getElementById("display6").value = items[search1].kostnad;
+					document.getElementById("display7").value = items[search1].antall;
+				}
+				else{
+					alert("varen eksister ikke")
+				}
+				document.getElementById("sok").value = "";
+			}
+
+			function change(){
+				let varenummer = document.getElementById("display1").value;
+				let beskrivelse = document.getElementById("display2").value;
+				let plassering1 = document.getElementById("display3").value;
+				let plassering2 = document.getElementById("display4").value;
+				let plassering3 = document.getElementById("display5").value;
+				let kostnad = document.getElementById("display6").value;
+				let antall = document.getElementById("display7").value;
+
+
+				let index = findWithAttr(items, "varenummer", varenummer);
+
+				items[index].varenummer = varenummer;
+				items[index].beskrivelse = beskrivelse;
+				items[index].plassering1 = plassering1;
+				items[index].plassering2 = plassering2;
+				items[index].plassering3 = plassering3;
+				items[index].kostnad = kostnad;
+				items[index].antall = antall;
+
+				document.getElementById("display1").readOnly = true;
+				document.getElementById("display2").readOnly = true;
+				document.getElementById("display3").readOnly = true;
+				document.getElementById("display4").readOnly = true;
+				document.getElementById("display5").readOnly = true;
+				document.getElementById("display6").readOnly = true;
+				document.getElementById("display7").readOnly = true;
+
+
+				localStorage.setItem("Varer", JSON.stringify(items));
+
+			}
+
+			function antall(){
+					let svar = Number(prompt("Antall du ønsker å ta ut?"));
+					let antVare = document.getElementById("display7").value;
+					let index = findWithAttr(items, "antall", antVare);
+
+					if(svar > antVare){
+						alert("Ikke nok antall, ta ut mindre");
+					}
+					else{
+						document.getElementById("display7").value = antVare - svar;
+						items[index].antall = document.getElementById("display7").value
+						localStorage.setItem("Varer", JSON.stringify(items));
+
+					}
+			}
+
+			function endre(){
+				document.getElementById("display1").readOnly = false;
+				document.getElementById("display2").readOnly = false;
+				document.getElementById("display3").readOnly = false;
+				document.getElementById("display4").readOnly = false;
+				document.getElementById("display5").readOnly = false;
+				document.getElementById("display6").readOnly = false;
+				document.getElementById("display7").readOnly = false;
+			}
+
+			function slett(){
+				let varenummer1 = document.getElementById("display1");
+				let index = findWithAttr(items, "varenummer", varenummer1);
+
+				items.splice(index, 1);
+				localStorage.setItem("Varer", JSON.stringify(items));
+
+				document.getElementById("display1").value = "";
+				document.getElementById("display2").value = "";
+				document.getElementById("display3").value = "";
+				document.getElementById("display4").value = "";
+				document.getElementById("display5").value = "";
+				document.getElementById("display6").value = "";
+				document.getElementById("display7").value = "";
+			}
+
+		</script>
+	</body>
+</html>
